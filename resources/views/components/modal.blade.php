@@ -31,21 +31,24 @@ Use:
     ]);
 @endphp
 
-<div {{ $attributes }} tabindex="-1">
+<div {{ $attributes }} tabindex="-1" aria-hidden="true">
     <div class="modal-dialog {{ $class }}">
         <div class="modal-content">
-            @if ($title)
-                <div {{ $title->merge(['modal-title']) }}>
-                    {{ $title }}
+            @if (isset($title) && !$title->isEmpty())
+                <div class="modal-header">
+                    <div {{ $title->attributes->merge(['class' => 'modal-title']) }}>
+                        {{ $title }}
+                    </div>
                 </div>
             @endif
-            <div {{ $header->merge(['modal-body']) }}>
+            <div {{ isset($body) && $body->attributes->merge(['class' => 'modal-body']) }}>
                 {{ $body ?? $slot }}
             </div>
-            @if ($footer)
-                <div {{ $header->merge(['modal-footer']) }}>
+            @if (isset($footer) && !$footer->isEmpty())
+                <div {{ $footer->attributes->merge(['class' => 'modal-footer']) }}>
                     {{ $footer }}
                 </div>
             @endif
         </div>
+    </div>
 </div>

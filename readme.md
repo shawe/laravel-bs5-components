@@ -53,11 +53,11 @@ composer require shawe/laravel-bs5-components
 A Bootstrap accordion:
 
 ```html
-<x-bs::accordion>
-    <x-bs::accordion-item :header="__('Section 1')" active>
+<x-bs::accordion id="accordionExample">
+    <x-bs::accordion-item id="accordionExample" target="collapseOne" :header="__('Section 1')" active>
         <p>Section 1 content...</p>
     </x-bs::accordion-item>
-    <x-bs::accordion-item :label="__('Section 2')">
+    <x-bs::accordion-item id="accordionExample" target="collapseTwo" :label="__('Section 2')">
         <p>Section 2 content...</p>
     </x-bs::accordion-item>
 </x-bs::accordion>
@@ -72,7 +72,7 @@ A Bootstrap accordion:
 A Bootstrap accordion item:
 
 ```html
-<x-bs::accordion-item :header="__('Section 1')" active>
+<x-bs::accordion-item id="accordionExample" target="collapseOne" :header="__('Section 1')" active>
     <p>Section 1 content...</p>
 </x-bs::accordion-item>
 ```
@@ -124,25 +124,17 @@ A Bootstrap breadcrumb:
 
 ```html
 <x-bs::breadcrumb>
-    <x-bs::breadcrumb-item :label="__('Home')" route="home" />
-    <x-bs::breadcrumb-item :label="__('Library')" route="library" />
-    <x-bs::breadcrumb-item :label="__('Data')" active />
+    <li class="breadcrumb-item">
+      <x-bs::link :label="__('Home')" route="home" />
+    </li>
+    <li class="breadcrumb-item">
+      <x-bs::link :label="__('Library')" route="library" />
+    </li>
+    <li class="breadcrumb-item">
+      <x-bs::link class="active" :label="__('Data')" />
+    </li>
 </x-bs::breadcrumb>
 ```
-
----
-
-### Breadcrumb Item
-
-A Bootstrap breadcrumb item:
-
-```html
-<x-bs::breadcrumb-item :label="__('Home')" route="home" />
-```
-
-#### Available Props & Slots
-
-- `active`: set the breadcrumb item to be active
 
 ---
 

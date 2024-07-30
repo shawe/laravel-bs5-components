@@ -6,7 +6,9 @@ Use:
 
 @props([
     'label' => null,
-    'percent' => 0,
+    'value' => 0,
+    'min' => 0,
+    'max' => 100,
     'color' => 'primary',
     'height' => null,
     'animated' => false,
@@ -20,11 +22,14 @@ Use:
         'progress-bar-striped' => $striped,
         'bg-' . $color => $color,
     ])->merge([
-        'style' => 'width: ' . $percent . '%',
+        'style' => 'width: ' . $value . '%;' . ($height ? ' height: ' . $height . 'px;' : ''),
     ]);
 @endphp
 
-<div class="progress mb-0" style="{{ $height ? 'height: ' . $height . 'px;' : '' }}">
+<div class="progress mb-3" role="progressbar" aria-valuenow="{{ $value }}" aria-valuemin="{{ $min }}"
+     aria-valuemax="{{ $max }}"
+     style="{{($height ? ' height: ' . $height . 'px;' : '')}}"
+>
     <div {{ $attributes }}>
         {{ $label ?? $slot }}
     </div>

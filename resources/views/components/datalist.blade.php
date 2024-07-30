@@ -1,7 +1,9 @@
 {{--
 Use:
 
-@php($options = ['Toronto', 'Montreal', 'Las Vegas'])
+@php
+    $options = ['Toronto', 'Montreal', 'Las Vegas'];
+@endphp
 <x-bs::datalist :label="__('City Name')" :options="$options" :prepend="__('I live in')" :append="_('right now.')" :help="__('Please enter your city.')" model="city_name" />
 --}}
 

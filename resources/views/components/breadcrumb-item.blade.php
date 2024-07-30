@@ -8,6 +8,8 @@ Use:
 
 @props([
     'active' => false,
+    'label' => null,
+    'route' => null,
 ])
 
 @php
@@ -20,5 +22,5 @@ Use:
 @endphp
 
 <li {{ $attributes }} @if ($active) aria-current="page" @endif >
-    {{ $slot }}
+    <x-bs::link :label="$label" route="$route"/>
 </li>

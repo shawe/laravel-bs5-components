@@ -1,28 +1,30 @@
 {{--
 Use:
 
-@php($images = [
-    [
-        'src' => 'https://via.placeholder.com/800x400?text=First+slide',
-        'alt' => 'First slide',
-        'caption' => 'First slide caption',
-    ],
-    [
-        'src' => 'https://via.placeholder.com/800x400?text=Second+slide',
-        'alt' => 'Second slide',
-        'caption' => 'Second slide caption',
-    ],
-    [
-        'src' => 'https://via.placeholder.com/800x400?text=Third+slide',
-        'alt' => 'Third slide',
-        'caption' => 'Third slide caption',
-    ],
-])
+@php
+    $images = [
+        [
+            'src' => 'https://via.placeholder.com/800x400?text=First+slide',
+            'alt' => 'First slide',
+            'caption' => 'First slide caption',
+        ],
+        [
+            'src' => 'https://via.placeholder.com/800x400?text=Second+slide',
+            'alt' => 'Second slide',
+            'caption' => 'Second slide caption',
+        ],
+        [
+            'src' => 'https://via.placeholder.com/800x400?text=Third+slide',
+            'alt' => 'Third slide',
+            'caption' => 'Third slide caption',
+        ],
+    ]);
+@endphp
 <x-bs::carousel id="XXX" :images="$images" />
 --}}
 
 @props([
-    'id' => null,
+    'id' => 'random_id_' . mt_rand(),
     'indicators' => true,
     'controls' => true,
     'images' => [],

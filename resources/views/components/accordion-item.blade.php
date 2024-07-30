@@ -9,7 +9,7 @@ Use:
 @props([
     'header' => null,
     'body' => null,
-    'active' => false,
+    'active' => 'false',
 ])
 
 @php
@@ -26,11 +26,13 @@ Use:
 
 <div {{ $attributes }}>
     <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $target}}" aria-active="{{ $active }}" aria-controls="{{ $target }}">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $target}}"
+                aria-expanded="{{ $active }}" aria-controls="{{ $target }}">
             {{ $header ?? __('N/A') }}
         </button>
     </h2>
-    <div id="{{ $target }}" class="accordion-collapse collapse @if($active) show @endif"  data-bs-parent="#{{ $id }}">
+    <div id="{{ $target }}" class="accordion-collapse collapse @if($active == 'true') show @endif"
+         data-bs-parent="#{{ $id }}">
         <div class="accordion-body">
             {{ $body ?? $slot }}
         </div>

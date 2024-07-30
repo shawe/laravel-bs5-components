@@ -3,7 +3,7 @@ Use:
 
 <x-bs::card>
     <slot name="header">
-        <h5 class="card-header">Featured</h5>
+        <h3 class="card-header">Featured</h3>
     </slot>
     <slot name="body">
         <h5 class="card-title">Special title treatment</h5>
@@ -20,6 +20,8 @@ Use:
     'header' => null,
     'body' => null,
     'footer' => null,
+    'imgTop' => null,
+    'imgBottom' => null,
 ])
 
 @php
@@ -31,17 +33,23 @@ Use:
 @endphp
 
 <div {{ $attributes }}>
-    @if ($header)
-        <div {{ $header->merge(['card-header']) }}>
+    @if (isset($imgTop) && !$imgTop->isEmpty())
+        {{ $imgTop }}
+    @endif
+    @if (isset($header) && !$header->isEmpty())
+        <div {{ $header->attributes->merge(['class' => 'card-header']) }}>
             {{ $header }}
         </div>
     @endif
-    <div {{ $header->merge(['card-body']) }}>
+    <div {{ $body->attributes->merge(['class' => 'card-body']) }}>
         {{ $body ?? $slot }}
     </div>
-    @if ($footer)
-        <div {{ $header->merge(['card-footer']) }}>
+    @if (isset($footer) && !$footer->isEmpty())
+        <div {{ $footer->attributes->merge(['class' => 'card-footer']) }}>
             {{ $footer }}
         </div>
+    @endif
+    @if (isset($imgBottom) && !$imgBottom->isEmpty())
+        {{ $imgBottom }}
     @endif
 </div>
