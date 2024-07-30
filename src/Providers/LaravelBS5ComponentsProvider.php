@@ -47,6 +47,6 @@ class LaravelBS5ComponentsProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../../config/' . $this->name . 'components.php', $this->name);
+        $this->mergeConfigFrom(__DIR__ . '/../../config/' . $this->name . '.php', $this->name);
     }
 }
