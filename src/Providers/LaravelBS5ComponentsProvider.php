@@ -18,7 +18,7 @@ class LaravelBS5ComponentsProvider extends ServiceProvider
      *
      * @var string
      */
-    private $namespace = 'bs5';
+    private $namespace = 'bs';
 
     /**
      *
