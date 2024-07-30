@@ -2,9 +2,10 @@
 Use:
 
 <x-bs::modal class="modal-dialog-centered">
-    <slot name="header">
+    <slot name="title">
         <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>    </slot>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </slot>
     <slot name="body">
         <p>Modal body text goes here.</p>
     </slot>
@@ -16,7 +17,7 @@ Use:
 --}}
 
 @props([
-    'header' => null,
+    'title' => null,
     'body' => null,
     'footer' => null,
     'class' => null,
@@ -33,9 +34,9 @@ Use:
 <div {{ $attributes }} tabindex="-1">
     <div class="modal-dialog {{ $class }}">
         <div class="modal-content">
-            @if ($header)
-                <div {{ $header->merge(['modal-title']) }}>
-                    {{ $header }}
+            @if ($title)
+                <div {{ $title->merge(['modal-title']) }}>
+                    {{ $title }}
                 </div>
             @endif
             <div {{ $header->merge(['modal-body']) }}>

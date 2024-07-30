@@ -43,7 +43,7 @@ This package contains a set of useful Bootstrap Laravel Blade components. It pro
 Require the package via composer:
 
 ```console
-composer require bastinald/laravel-bs5-components
+composer require shawe/laravel-bs5-components
 ```
 
 ## Components
@@ -460,6 +460,35 @@ A hyperlink:
 - `route`: sets the `href` to a route
 - `url`: sets the `href` to a url
 - `href`: sets the `href`
+
+---
+
+### Modal
+
+A Bootstrap modal:
+
+```html
+<x-bs::modal id="profile.update">
+    <slot name="title">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </slot>
+    <slot name="body">
+        <p>Modal body text goes here.</p>
+    </slot>
+    <slot name="footer" class="text-body-secondary">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </slot>
+</x-bs::modal>
+```
+
+#### Available Props & Slots
+
+- `title`: modal title content
+- `body`: modal body content
+- `footer`: modal footer content
+- `class`: modal class e.g. `modal-lg`, `modal-dialog-centered`
 
 ---
 
