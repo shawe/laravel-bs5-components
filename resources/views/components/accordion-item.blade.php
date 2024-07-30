@@ -13,6 +13,7 @@ Use:
 ])
 
 @php
+    $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $id = $attributes->get('id', $model ?? $wireModel);
     $target = $attributes->get('target', $model ?? $wireModel);
 

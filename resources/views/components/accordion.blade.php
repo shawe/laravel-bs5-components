@@ -21,6 +21,7 @@ Use:
 ])
 
 @php
+    $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $id = $attributes->get('id', $model ?? $wireModel);
 
     $attributes = $attributes->class([
