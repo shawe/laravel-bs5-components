@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::textarea :label="__('Biography')" rows="5" :help="__('Please tell us about yourself.')" model="biography" />
+--}}
+
 @props([
     'label' => null,
     'icon' => null,
@@ -19,7 +25,7 @@
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $key = $attributes->get('name', $model ?? $wireModel);
     $id = $attributes->get('id', $model ?? $wireModel);
-    $prefix = config('laravel-bootstrap-components.use_with_model_trait') ? 'model.' : null;
+    $prefix = config('laravel-bs5-components.use_with_model_trait') ? 'model.' : null;
 
     $attributes = $attributes->class([
         'form-control',

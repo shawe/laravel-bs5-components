@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::progress :label="__('25% Complete')" percent="25" color="success" height="10" animated striped />
+--}}
+
 @props([
     'label' => null,
     'percent' => 0,

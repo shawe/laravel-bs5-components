@@ -43,21 +43,54 @@ This package contains a set of useful Bootstrap Laravel Blade components. It pro
 Require the package via composer:
 
 ```console
-composer require bastinald/laravel-bootstrap-components
+composer require bastinald/laravel-bs5-components
 ```
 
 ## Components
+
+### Accordion
+
+A Bootstrap accordion:
+
+```html
+<x-bs::accordion>
+    <x-bs::accordion-item :header="__('Section 1')" active>
+        <p>Section 1 content...</p>
+    </x-bs::accordion-item>
+    <x-bs::accordion-item :label="__('Section 2')">
+        <p>Section 2 content...</p>
+    </x-bs::accordion-item>
+</x-bs::accordion>
+```
+
+#### Available Props & Slots
+
+- `body`: accordion body content, can also be placed in the `slot`
+
+### Accordion Item
+
+A Bootstrap accordion item:
+
+```html
+<x-bs::accordion-item :header="__('Section 1')" active>
+    <p>Section 1 content...</p>
+</x-bs::accordion-item>
+```
+
+---
+
+#### Available Props & Slots
+
+- `header`: accordion header text
+- `body`: accordion body content, can also be placed in the `slot`
+- `active`: set the accordion item to be active
 
 ### Alert
 
 A Bootstrap alert:
 
 ```html
-<x-bs::alert
-    :label="__('It was successful!')"
-    color="info"
-    dismissible
-/>
+<x-bs::alert :label="__('It was successful!')" color="info" dismissible />
 ```
 
 #### Available Props & Slots
@@ -74,10 +107,7 @@ A Bootstrap alert:
 A Bootstrap badge:
 
 ```html
-<x-bs::badge
-    :label="__('Pending')"
-    color="warning"
-/>
+<x-bs::badge :label="__('Pending')" color="warning" />
 ```
 
 #### Available Props & Slots
@@ -88,17 +118,40 @@ A Bootstrap badge:
 
 ---
 
+### Breadcrumb
+
+A Bootstrap breadcrumb:
+
+```html
+<x-bs::breadcrumb>
+    <x-bs::breadcrumb-item :label="__('Home')" route="home" />
+    <x-bs::breadcrumb-item :label="__('Library')" route="library" />
+    <x-bs::breadcrumb-item :label="__('Data')" active />
+</x-bs::breadcrumb>
+```
+
+---
+
+### Breadcrumb Item
+
+A Bootstrap breadcrumb item:
+
+```html
+<x-bs::breadcrumb-item :label="__('Home')" route="home" />
+```
+
+#### Available Props & Slots
+
+- `active`: set the breadcrumb item to be active
+
+---
+
 ### Button
 
 A Bootstrap button:
 
 ```html
-<x-bs::button
-    :label="__('Login')"
-    color="primary"
-    size="lg"
-    route="login"
-/>
+<x-bs::button :label="__('Login')" color="primary" size="lg" route="login" />
 ```
 
 #### Available Props & Slots
@@ -118,18 +171,73 @@ A Bootstrap button:
 
 ---
 
+### Card
+
+A Bootstrap card:
+
+```html
+<x-bs::card>
+    <x-slot name="header">
+        <h5>Card Title</h5>
+    </x-slot>
+    <x-slot name="body">
+        <p>Card body content...</p>
+    </x-slot>
+    <x-slot name="footer">
+        <button class="btn btn-primary">Card footer button</button>
+    </x-slot>
+</x-bs::card>
+```
+
+#### Available Props & Slots
+
+- `header`: card header content
+- `body`: card body content, can also be placed in the `slot`
+- `footer`: card footer content
+
+---
+
+### Carousel
+
+A Bootstrap carousel:
+
+```html
+@php($images = [
+  [
+    'src' => 'https://via.placeholder.com/800x400?text=First+slide',
+    'alt' => 'First slide',
+    'caption' => 'First slide caption',
+  ],
+  [
+    'src' => 'https://via.placeholder.com/800x400?text=Second+slide',
+    'alt' => 'Second slide',
+    'caption' => 'Second slide caption',
+  ],
+  [
+    'src' => 'https://via.placeholder.com/800x400?text=Third+slide',
+    'alt' => 'Third slide',
+    'caption' => 'Third slide caption',
+  ],
+])
+<x-bs::carousel :images="$images" />
+```
+
+#### Available Props & Slots
+
+- `images`: array of images
+- `indicators`: show carousel indicators
+- `controls`: show carousel controls
+- `id`: carousel id
+
+
+---
+
 ### Check
 
 A Bootstrap checkbox input:
 
 ```html
-<x-bs::check
-    :label="__('Agree')"
-    :checkLabel="__('I agree to the TOS')"
-    :help="__('Please accept the TOS.')"
-    switch
-    model="agree"
-/>
+<x-bs::check :label="__('Agree')" :checkLabel="__('I agree to the TOS')" :help="__('Please accept the TOS.')" switch model="agree" />
 ```
 
 #### Available Props & Slots
@@ -148,9 +256,7 @@ A Bootstrap checkbox input:
 A Bootstrap close button:
 
 ```html
-<x-bs::close 
-    dismiss="modal"
-/>
+<x-bs::close dismiss="modal" />
 ```
 
 #### Available Props & Slots
@@ -165,13 +271,7 @@ A Bootstrap close button:
 A Bootstrap color picker input:
 
 ```html
-<x-bs::color
-    :label="__('Favorite Color')"
-    :prepend="__('I like')"
-    :append="_('the most.')"
-    :help="__('Please pick a color.')"
-    model="favorite_color"
-/>
+<x-bs::color :label="__('Favorite Color')" :prepend="__('I like')" :append="_('the most.')" :help="__('Please pick a color.')" model="favorite_color" />
 ```
 
 #### Available Props & Slots
@@ -192,14 +292,7 @@ A Bootstrap color picker input:
 A Bootstrap datalist input:
 
 ```html
-<x-bs::datalist
-    :label="__('City Name')"
-    :options="['Toronto', 'Montreal', 'Las Vegas']"
-    :prepend="__('I live in')"
-    :append="_('right now.')"
-    :help="__('Please enter your city.')"
-    model="city_name"
-/>
+<x-bs::datalist :label="__('City Name')" :options="['Toronto', 'Montreal', 'Las Vegas']" :prepend="__('I live in')" :append="_('right now.')" :help="__('Please enter your city.')" model="city_name" />
 ```
 
 #### Available Props & Slots
@@ -222,10 +315,7 @@ A Bootstrap datalist input:
 A description list:
 
 ```html
-<x-bs::desc 
-    :term="__('ID')"
-    :details="$user->id"
-/>
+<x-bs::desc :term="__('ID')" :details="$user->id" />
 ```
 
 #### Available Props & Slots
@@ -241,18 +331,9 @@ A description list:
 A Bootstrap dropdown:
 
 ```html
-<x-bs::dropdown
-    :label="__('Filter')"
-    color="danger"
->
-    <x-bs::dropdown-item 
-        :label="__('By Name')"
-        click="$set('filter', 'name')"
-    />
-    <x-bs::dropdown-item
-        :label="__('By Age')"
-        click="$set('filter', 'age')"
-    />
+<x-bs::dropdown :label="__('Filter')" color="danger">
+    <x-bs::dropdown-item :label="__('By Name')" click="$set('filter', 'name')" />
+    <x-bs::dropdown-item :label="__('By Age')" click="$set('filter', 'age')" />
 </x-bs::dropdown>
 ```
 
@@ -271,10 +352,7 @@ A Bootstrap dropdown:
 A Bootstrap dropdown menu item:
 
 ```html
-<x-bs::dropdown-item
-    :label="__('Login')"
-    route="login"
-/>
+<x-bs::dropdown-item :label="__('Login')" route="login" />
 ```
 
 #### Available Props & Slots
@@ -308,9 +386,7 @@ A Bootstrap form:
 A Font Awesome icon:
 
 ```html
-<x-bs::icon
-    name="cog"
-/>
+<x-bs::icon name="cog" />
 ```
 
 #### Available Props & Slots
@@ -329,11 +405,7 @@ A Font Awesome icon:
 An image:
 
 ```html
-<x-bs::image
-    asset="images/logo.png"
-    height="24"
-    rounded
-/>
+<x-bs::image asset="images/logo.png" height="24" rounded />
 ```
 
 #### Available Props & Slots
@@ -351,12 +423,7 @@ An image:
 A Bootstrap text input:
 
 ```html
-<x-bs::input
-    :label="__('Email Address')"
-    type="email"
-    :help="__('Please enter your email.')"
-    model="email_address"
->
+<x-bs::input :label="__('Email Address')" type="email" :help="__('Please enter your email.')" model="email_address">
     <x-slot name="prepend">
         <i class="fa fa-envelope"></i>
     </x-slot>
@@ -383,10 +450,7 @@ A Bootstrap text input:
 A hyperlink:
 
 ```html
-<x-bs::link
-    :label="__('Users')"
-    route="users"
-/>
+<x-bs::link :label="__('Users')" route="users" />
 ```
 
 #### Available Props & Slots
@@ -404,17 +468,9 @@ A hyperlink:
 A Bootstrap nav dropdown:
 
 ```html
-<x-bs::nav-dropdown
-    :label="Auth::user()->name"
->
-    <x-bs::dropdown-item 
-        :label="__('Update Profile')"
-        click="$emit('showModal', 'profile.update')"
-    />
-    <x-bs::dropdown-item
-        :label="__('Logout')"
-        click="logout"
-    />
+<x-bs::nav-dropdown :label="Auth::user()->name">
+    <x-bs::dropdown-item :label="__('Update Profile')" click="$emit('showModal', 'profile.update')" />
+    <x-bs::dropdown-item :label="__('Logout')" click="logout" />
 </x-bs::nav-dropdown>
 ```
 
@@ -431,10 +487,7 @@ A Bootstrap nav dropdown:
 A Bootstrap nav link:
 
 ```html
-<x-bs::nav-link
-    :label="__('Users')"
-    route="users"
-/>
+<x-bs::nav-link :label="__('Users')" route="users" />
 ```
 
 #### Available Props & Slots
@@ -452,10 +505,7 @@ A Bootstrap nav link:
 Responsive Bootstrap pagination links:
 
 ```html
-<x-bs::pagination
-    :links="App\Models\User::paginate()"
-    justify="center"
-/>
+<x-bs::pagination :links="App\Models\User::paginate()" justify="center" />
 ```
 
 #### Available Props & Slots
@@ -470,14 +520,7 @@ Responsive Bootstrap pagination links:
 A Bootstrap progress bar:
 
 ```html
-<x-bs::progress
-    :label="__('25% Complete')"
-    percent="25"
-    color="success"
-    height="10"
-    animated
-    striped
-/>
+<x-bs::progress :label="__('25% Complete')" percent="25" color="success" height="10" animated striped />
 ```
 
 #### Available Props & Slots
@@ -496,13 +539,7 @@ A Bootstrap progress bar:
 A Bootstrap radio input:
 
 ```html
-<x-bs::radio
-    :label="__('Gender')"
-    :options="['Male', 'Female']"
-    :help="__('Please select your gender.')"
-    switch
-    model="gender"
-/>
+<x-bs::radio :label="__('Gender')" :options="['Male', 'Female']" :help="__('Please select your gender.')" switch model="gender" />
 ```
 
 #### Available Props & Slots
@@ -521,15 +558,8 @@ A Bootstrap radio input:
 A Bootstrap select input:
 
 ```html
-<x-bs::select
-    :label="__('Your Country')"
-    :placeholder="__('Select Country')"
-    :options="['Australia', 'Canada', 'USA']"
-    :prepend="__('I live in')"
-    :append="_('right now.')"
-    :help="__('Please select your country.')"
-    model="your_country"
-/>
+@php($countries = ['Australia', 'Canada', 'USA'])
+<x-bs::select :label="__('Your Country')" :placeholder="__('Select Country')" :options="$countries" :prepend="__('I live in')" :append="_('right now.')" :help="__('Please select your country.')" model="your_country" />
 ```
 
 #### Available Props & Slots
@@ -552,12 +582,7 @@ A Bootstrap select input:
 A Bootstrap textarea input:
 
 ```html
-<x-bs::textarea
-    :label="__('Biography')"
-    rows="5"
-    :help="__('Please tell us about yourself.')"
-    model="biography"
-/>
+<x-bs::textarea :label="__('Biography')" rows="5" :help="__('Please tell us about yourself.')" model="biography" />
 ```
 
 #### Available Props & Slots
@@ -660,7 +685,7 @@ This method works just like the Livewire `validate` method, so you can specify y
 Use your own component views by publishing the package views:
 
 ```console
-php artisan vendor:publish --tag=laravel-bootstrap-components:views
+php artisan vendor:publish --tag=laravel-bs5-components:views
 ```
 
 Now edit the files inside `resources/views/vendor/bs`. The package will use these files to render the components.
@@ -670,7 +695,7 @@ Now edit the files inside `resources/views/vendor/bs`. The package will use thes
 Use your own font icons by publishing the package config:
 
 ```console
-php artisan vendor:publish --tag=laravel-bootstrap-components:config
+php artisan vendor:publish --tag=laravel-bs5-components:config
 ```
 
-Now edit the `icon_class_prefix` value inside `config/laravel-bootstrap-components.php`. The package will use this class to render the icons.
+Now edit the `icon_class_prefix` value inside `config/laravel-bs5-components.php`. The package will use this class to render the icons.

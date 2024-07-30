@@ -1,6 +1,12 @@
+{{--
+Use:
+
+<x-bs::icon name="cog" />
+--}}
+
 @props([
     'name' => null,
-    'style' => config('laravel-bootstrap-components.font_awesome_style'),
+    'style' => config('laravel-bs5-components.font_awesome_style'),
     'size' => null,
     'color' => null,
     'spin' => false,

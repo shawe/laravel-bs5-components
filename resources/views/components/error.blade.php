@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::error :key="$key" />
+--}}
+
 @props([
     'key' => null,
 ])

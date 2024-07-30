@@ -1,3 +1,10 @@
+{{--
+Use:
+
+@php($options = ['Toronto', 'Montreal', 'Las Vegas'])
+<x-bs::datalist :label="__('City Name')" :options="$options" :prepend="__('I live in')" :append="_('right now.')" :help="__('Please enter your city.')" model="city_name" />
+--}}
+
 @props([
     'label' => null,
     'options' => [],
@@ -19,7 +26,7 @@
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $key = $attributes->get('name', $model ?? $wireModel);
     $id = $attributes->get('id', $model ?? $wireModel);
-    $prefix = config('laravel-bootstrap-components.use_with_model_trait') ? 'model.' : null;
+    $prefix = config('laravel-bs5-components.use_with_model_trait') ? 'model.' : null;
     $list = $attributes->get('list', $key . '_list');
 
     $attributes = $attributes->class([

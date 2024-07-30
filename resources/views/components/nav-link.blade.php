@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::nav-link :label="__('Users')" route="users" />
+--}}
+
 @props([
     'icon' => null,
     'label' => null,

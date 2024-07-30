@@ -1,27 +1,27 @@
 {
-    "name": "bastinald/laravel-bootstrap-components",
-    "homepage": "https://github.com/bastinald/laravel-bootstrap-components",
-    "description": "Laravel Bootstrap Blade components.",
+    "name": "shawe/laravel-bs5-components",
+    "homepage": "https://github.com/shawe/laravel-bs5-components",
+    "description": "Laravel Bootstrap Blade components. This is a fork from https://github.com/bastinald/laravel-bootstrap-components to add more needed components. All credits to Kevin Dion.",
     "license": "MIT",
     "authors": [
         {
-            "name": "Kevin Dion",
-            "email": "bastinald@icloud.com",
+            "name": "Francesc Pineda Segarra",
+            "email": "francesc.pineda.segarra@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "laravel/framework": "^8.0"
+        "laravel/framework": "^11.0"
     },
     "autoload": {
         "psr-4": {
-            "Bastinald\\LaravelBootstrapComponents\\": "src"
+            "Laravel\\Bootstrap\\Components\\": "src"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Bastinald\\LaravelBootstrapComponents\\Providers\\LaravelBootstrapComponentsProvider"
+                "Laravel\\Bootstrap\\Components\\Providers\\LaravelBS5ComponentsProvider"
             ]
         }
     }

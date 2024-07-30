@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::close dismiss="modal" />
+--}}
+
 @props([
     'color' => null,
     'dismiss' => null,

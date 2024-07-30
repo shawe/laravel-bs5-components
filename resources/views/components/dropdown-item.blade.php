@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::dropdown-item :label="__('Login')" route="login" />
+--}}
+
 @props([
     'icon' => null,
     'label' => null,

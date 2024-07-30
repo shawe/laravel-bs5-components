@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::button :label="__('Login')" color="primary" size="lg" route="login" />
+--}}
+
 @props([
     'icon' => null,
     'label' => null,

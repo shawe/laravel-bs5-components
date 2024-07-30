@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::check-label :label="__('Agree')" />
+--}}
+
 @props([
     'label' => null,
 ])

@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::check :label="__('Agree')" :checkLabel="__('I agree to the TOS')" :help="__('Please accept the TOS.')" switch model="agree" />
+--}}
+
 @props([
     'label' => null,
     'checkLabel' => null,
@@ -14,7 +20,7 @@
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $key = $attributes->get('name', $model ?? $wireModel);
     $id = $attributes->get('id', $model ?? $wireModel);
-    $prefix = config('laravel-bootstrap-components.use_with_model_trait') ? 'model.' : null;
+    $prefix = config('laravel-bs5-components.use_with_model_trait') ? 'model.' : null;
 
     $attributes = $attributes->class([
         'form-check-input',

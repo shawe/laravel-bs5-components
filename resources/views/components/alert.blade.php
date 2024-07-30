@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::alert :label="__('It was successful!')" color="info" dismissible />
+--}}
+
 @props([
     'icon' => null,
     'label' => null,
@@ -16,7 +22,6 @@
 
 <div {{ $attributes }}>
     <x-bs::icon :name="$icon"/>
-
     {{ $label ?? $slot }}
 
     @if($dismissible)

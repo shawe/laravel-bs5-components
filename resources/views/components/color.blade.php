@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::color :label="__('Favorite Color')" :prepend="__('I like')" :append="_('the most.')" :help="__('Please pick a color.')" model="favorite_color" />
+--}}
+
 @props([
     'label' => null,
     'icon' => null,
@@ -16,7 +22,7 @@
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $key = $attributes->get('name', $model ?? $wireModel);
     $id = $attributes->get('id', $model ?? $wireModel);
-    $prefix = config('laravel-bootstrap-components.use_with_model_trait') ? 'model.' : null;
+    $prefix = config('laravel-bs5-components.use_with_model_trait') ? 'model.' : null;
 
     $attributes = $attributes->class([
         'form-control form-control-color',

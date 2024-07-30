@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::badge :label="__('Pending')" color="warning" />
+--}}
+
 @props([
     'icon' => null,
     'label' => null,

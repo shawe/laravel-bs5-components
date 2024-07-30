@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::desc :term="__('ID')" :details="$user->id" />
+--}}
+
 @props([
     'term' => null,
     'details' => null,

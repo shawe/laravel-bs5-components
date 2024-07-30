@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::image asset="images/logo.png" height="24" rounded />
+--}}
+
 @props([
     'asset' => null,
     'mix' => null,

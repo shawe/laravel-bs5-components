@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::radio :label="__('Gender')" :options="['Male', 'Female']" :help="__('Please select your gender.')" switch model="gender" />
+--}}
+
 @props([
     'label' => null,
     'options' => [],
@@ -14,7 +20,7 @@
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $key = $attributes->get('name', $model ?? $wireModel);
     $id = $attributes->get('id', $model ?? $wireModel);
-    $prefix = config('laravel-bootstrap-components.use_with_model_trait') ? 'model.' : null;
+    $prefix = config('laravel-bs5-components.use_with_model_trait') ? 'model.' : null;
     $options = Arr::isAssoc($options) ? $options : array_combine($options, $options);
 
     $attributes = $attributes->class([

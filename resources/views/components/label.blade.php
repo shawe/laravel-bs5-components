@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::label label="This is label" />
+--}}
+
 @props([
     'label' => null,
 ])

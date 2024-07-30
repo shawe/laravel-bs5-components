@@ -1,3 +1,13 @@
+{{--
+Use:
+
+<x-bs::input :label="__('Email Address')" type="email" :help="__('Please enter your email.')" model="email_address" >
+    <x-slot name="prepend">
+        <i class="fa fa-envelope"></i>
+    </x-slot>
+</x-bs::input>
+--}}
+
 @props([
     'label' => null,
     'type' => 'text',
@@ -23,7 +33,7 @@
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $key = $attributes->get('name', $model ?? $wireModel);
     $id = $attributes->get('id', $model ?? $wireModel);
-    $prefix = config('laravel-bootstrap-components.use_with_model_trait') ? 'model.' : null;
+    $prefix = config('laravel-bs5-components.use_with_model_trait') ? 'model.' : null;
 
     $attributes = $attributes->class([
         'form-control',

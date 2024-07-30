@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::help label="This is a help text sample" />
+--}}
+
 @props([
     'label' => null,
 ])

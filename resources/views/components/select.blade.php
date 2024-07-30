@@ -1,3 +1,10 @@
+{{--
+Use:
+
+@php ($countries = ['Australia', 'Canada', 'USA'])
+<x-bs::select :label="__('Your Country')" :placeholder="__('Select Country')" :options="$countries" :prepend="__('I live in')" :append="_('right now.')" :help="__('Please select your country.')" model="your_country" />
+--}}
+
 @props([
     'label' => null,
     'placeholder' => null,
@@ -18,7 +25,7 @@
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $key = $attributes->get('name', $model ?? $wireModel);
     $id = $attributes->get('id', $model ?? $wireModel);
-    $prefix = config('laravel-bootstrap-components.use_with_model_trait') ? 'model.' : null;
+    $prefix = config('laravel-bs5-components.use_with_model_trait') ? 'model.' : null;
     $options = Arr::isAssoc($options) ? $options : array_combine($options, $options);
 
     $attributes = $attributes->class([

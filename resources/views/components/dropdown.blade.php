@@ -1,3 +1,12 @@
+{{--
+Use:
+
+<x-bs::dropdown :label="__('Filter')" color="danger" >
+    <x-bs::dropdown-item :label="__('By Name')" click="$set('filter', 'name')" />
+    <x-bs::dropdown-item :label="__('By Age')" click="$set('filter', 'age')" />
+</x-bs::dropdown>
+--}}
+
 @props([
     'icon' => null,
     'label' => null,

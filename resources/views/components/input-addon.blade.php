@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::input-addon :label="$append" class="rounded-end"/>
+--}}
+
 @props([
     'icon' => null,
     'label' => null,
@@ -14,7 +20,6 @@
 @if($icon || $label || !$slot->isEmpty())
     <span {{ $attributes }}>
         <x-bs::icon :name="$icon"/>
-
         {{ $label ?? $slot }}
     </span>
 @endif

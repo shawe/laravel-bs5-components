@@ -1,3 +1,9 @@
+{{--
+Use:
+
+<x-bs::pagination :links="App\Models\User::paginate()" justify="center" />
+--}}
+
 @props([
     'links' => null,
     'justify' => 'center',
