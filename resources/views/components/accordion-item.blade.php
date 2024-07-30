@@ -20,7 +20,7 @@ Use:
     $attributes = $attributes->class([
         'accordion-item',
     ])->merge([
-        //
+        'id' => $id,
     ]);
 @endphp
 

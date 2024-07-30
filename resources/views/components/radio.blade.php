@@ -28,6 +28,7 @@ Use:
         'is-invalid' => $errors->has($key),
     ])->merge([
         'type' => 'radio',
+        'id' => $id,
         'name' => $key,
         'wire:model.' . $bind => $model ? $prefix . $model : null,
     ]);
