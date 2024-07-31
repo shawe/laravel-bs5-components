@@ -2,14 +2,14 @@
 Use:
 
 <x-bs::modal class="modal-dialog-centered">
-    <slot name="title">
+    <x-slot name="title">
         <h5 class="modal-title">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </slot>
-    <slot name="body">
+    <x-slot name="body">
         <p>Modal body text goes here.</p>
     </slot>
-    <slot name="footer" class="text-body-secondary">
+    <x-slot name="footer" class="text-body-secondary">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
     </slot>

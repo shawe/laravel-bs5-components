@@ -2,15 +2,15 @@
 Use:
 
 <x-bs::card>
-    <slot name="header">
+    <x-slot name="header">
         <h3 class="card-header">Featured</h3>
     </slot>
-    <slot name="body">
+    <x-slot name="body">
         <h5 class="card-title">Special title treatment</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
     </slot>
-    <slot name="footer" class="text-body-secondary">
+    <x-slot name="footer" class="text-body-secondary">
         2 days ago
     </slot>
 </x-bs::card>
