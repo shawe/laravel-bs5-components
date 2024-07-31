@@ -18,6 +18,7 @@ Use:
     'help' => null,
     'model' => null,
     'lazy' => false,
+    'selectedItem' => null,
 ])
 
 @php
@@ -51,7 +52,9 @@ Use:
             <option value="">{{ $placeholder }}</option>
 
             @foreach($options as $optionValue => $optionLabel)
-                <option value="{{ $optionValue }}">{{ $optionLabel }}</option>
+                <option value="{{ $optionValue }}" @if ($optionValue == $selectedItem) selected @endif>
+                    {{ $optionLabel }}
+                </option>
             @endforeach
         </select>
 
@@ -62,3 +65,33 @@ Use:
 
     <x-bs::help :label="$help"/>
 </div>
+
+@if (isset($attributes['class']) && Illuminate\Support\Str::contains($attributes['class'], 'select2'))
+    @push('css')
+        <link rel="stylesheet" href="{{ asset('build/extensions/select2/css/select2.min.css') }}">
+        <link rel="stylesheet"
+              href="{{ asset('build/extensions/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css') }}">
+    @endpush
+
+    @once
+        @push('js')
+            <script src="{{ asset('build/extensions/select2/js/select2.min.js') }}"></script>
+            @if (file_exists(public_path('build/extensions/select2/js/i18n/' . app()->getLocale() . '.js')))
+                <script src="{{ asset('build/extensions/select2/js/i18n/' . app()->getLocale() . '.js') }}"></script>
+            @endif
+            <script>
+                $(document).ready(function () {
+                    $('select.select2').select2({
+                        theme: 'bootstrap-5',
+                        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                        closeOnSelect: false,
+                        placeholder: {
+                            id: '-1', // the value of the option
+                            text: '{{ __('Select one item') }}'
+                        }
+                    });
+                });
+            </script>
+        @endpush
+    @endonce
+@endif
