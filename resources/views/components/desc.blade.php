@@ -23,7 +23,7 @@ Use:
 
     <dd class="mb-0">
         @if($details || !$slot->isEmpty())
-            {{ $details ?? $slot }}
+            {!! $details ?? $slot !!}
         @elseif($date)
             @displayDate($date)
         @else

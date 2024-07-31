@@ -11,6 +11,9 @@ Use:
     'url' => null,
     'href' => null,
     'click' => null,
+    'selected' => false,
+    'toogle' => false,
+    'target' => false,
 ])
 
 @php
@@ -19,15 +22,23 @@ Use:
 
     $attributes = $attributes->class([
         'nav-link',
-        'active' => $href == Request::url(),
+        'rounded-top-3',
+        'bg-white' => (bool) $selected,
+        'bg-light' => !(bool) $selected,
+        'active' => (bool) $selected,
     ])->merge([
         'href' => $href,
         'wire:click.prevent' => $click,
+        'data-bs-toogle' => $toogle,
+        'data-bs-target' => '#' . $target,
+        'aria-controls' => $target ? $target : false,
+        'aria-selected' => (bool) $selected ? 'true' : 'false',
+        'tabindex' => (bool) $selected ? false : -1,
     ]);
 @endphp
 
-<a {{ $attributes }}>
+<button {{ $attributes }}>
     <x-bs::icon :name="$icon"/>
 
-    {{ $label ?? $slot }}
-</a>
+    {!! $label ?? $slot !!}
+</button>

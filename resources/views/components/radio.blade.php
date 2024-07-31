@@ -28,7 +28,6 @@ Use:
         'is-invalid' => $errors->has($key),
     ])->merge([
         'type' => 'radio',
-        'id' => $id,
         'name' => $key,
         'wire:model.' . $bind => $model ? $prefix . $model : null,
     ]);
@@ -40,7 +39,6 @@ Use:
     @foreach($options as $optionValue => $optionLabel)
         <div class="form-check {{ $switch ? 'form-switch' : '' }}">
             @php($optionId = $id . '_' . $loop->index)
-
             <input {{ $attributes->merge(['id' => $optionId, 'value' => $optionValue]) }}>
 
             <x-bs::check-label :for="$optionId" :label="$optionLabel"/>

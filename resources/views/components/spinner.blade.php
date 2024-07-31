@@ -5,9 +5,9 @@ Use:
 --}}
 
 @props([
-    'loading' => __('Loading'),
+    'label' => null,
 ])
 
 <div {{ $attributes->merge(['class' => 'spinner-border', 'role' => 'status']) }}>
-    <span class="visually-hidden">{{ $loading }}</span>
+    <span class="visually-hidden">{{ $label }}</span>
 </div>

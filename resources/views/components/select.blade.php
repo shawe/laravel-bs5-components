@@ -1,7 +1,9 @@
 {{--
 Use:
 
-@php ($countries = ['Australia', 'Canada', 'USA'])
+@php
+    $countries = ['Australia', 'Canada', 'USA']
+@endphp
 <x-bs::select :label="__('Your Country')" :placeholder="__('Select Country')" :options="$countries" :prepend="__('I live in')" :append="_('right now.')" :help="__('Please select your country.')" model="your_country" />
 --}}
 

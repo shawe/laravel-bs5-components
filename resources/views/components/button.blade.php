@@ -32,12 +32,12 @@ Use:
         'data-bs-dismiss' => $dismiss,
         'data-bs-toggle' => $toggle,
         'wire:click' => $click,
-        'onclick' => $confirm ? 'confirm(\'' . __('Are you sure?') . '\') || event.stopImmediatePropagation()' : null,
+        'onclick' => isset($confirm) ? $confirm : false,
     ]);
 @endphp
 
 <{{ $href ? 'a' : 'button' }} {{ $attributes }}>
     <x-bs::icon :name="$icon"/>
 
-    {{ $label ?? $slot }}
+{!! $label ?? $slot !!}
 </{{ $href ? 'a' : 'button' }}>

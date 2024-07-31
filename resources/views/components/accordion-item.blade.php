@@ -34,7 +34,7 @@ Use:
     <div id="{{ $target }}" class="accordion-collapse collapse @if($active == 'true') show @endif"
          data-bs-parent="#{{ $id }}">
         <div class="accordion-body">
-            {{ $body ?? $slot }}
+            {!! $body ?? $slot !!}
         </div>
     </div>
 </div>

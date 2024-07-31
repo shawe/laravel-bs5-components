@@ -20,6 +20,6 @@ Use:
 @if($icon || $label || !$slot->isEmpty())
     <span {{ $attributes }}>
         <x-bs::icon :name="$icon"/>
-        {{ $label ?? $slot }}
+        {!! $label ?? $slot !!}
     </span>
 @endif

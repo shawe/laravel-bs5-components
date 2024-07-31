@@ -18,6 +18,6 @@ Use:
 
 @if($label || !$slot->isEmpty())
     <div {{ $attributes }}>
-        {{ $label ?? $slot }}
+        {!! $label ?? $slot !!}
     </div>
 @endif

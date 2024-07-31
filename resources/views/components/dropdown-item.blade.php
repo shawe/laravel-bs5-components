@@ -30,5 +30,5 @@ Use:
 <{{ $href ? 'a' : 'button' }} {{ $attributes }}>
     <x-bs::icon :name="$icon"/>
 
-    {{ $label ?? $slot }}
+{!! $label ?? $slot !!}
 </{{ $href ? 'a' : 'button' }}>

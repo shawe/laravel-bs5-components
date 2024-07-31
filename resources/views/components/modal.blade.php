@@ -21,6 +21,7 @@ Use:
     'body' => null,
     'footer' => null,
     'class' => null,
+    'static' => false,
 ])
 
 @php
@@ -31,22 +32,26 @@ Use:
     ]);
 @endphp
 
-<div {{ $attributes }} tabindex="-1" aria-hidden="true">
+<div {{ $attributes }} tabindex="-1" aria-hidden="true" @if ($static)  data-bs-backdrop="static"
+     data-bs-keyboard="false" @endif >
     <div class="modal-dialog {{ $class }}">
         <div class="modal-content">
-            @if (isset($title) && !$title->isEmpty())
-                <div class="modal-header">
+            <div class="modal-header">
+                @if (isset($title) && !$title->isEmpty())
                     <div {{ $title->attributes->merge(['class' => 'modal-title']) }}>
-                        {{ $title }}
+                        {!! $title !!}
                     </div>
+                @endif
+                <x-bs::close/>
+            </div>
+            @if (isset($body) && !$body->isEmpty())
+                <div {{ $body->attributes->merge(['class' => 'modal-body']) }}>
+                    {!! $body !!}
                 </div>
             @endif
-            <div {{ isset($body) && $body->attributes->merge(['class' => 'modal-body']) }}>
-                {{ $body ?? $slot }}
-            </div>
             @if (isset($footer) && !$footer->isEmpty())
                 <div {{ $footer->attributes->merge(['class' => 'modal-footer']) }}>
-                    {{ $footer }}
+                    {!! $footer !!}
                 </div>
             @endif
         </div>

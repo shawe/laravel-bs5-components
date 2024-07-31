@@ -32,5 +32,5 @@ Use:
 @endphp
 
 <div {{ $attributes }}>
-    {{ $body ?? $slot }}
+    {!! $body ?? $slot !!}
 </div>

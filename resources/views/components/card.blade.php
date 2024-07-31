@@ -34,22 +34,22 @@ Use:
 
 <div {{ $attributes }}>
     @if (isset($imgTop) && !$imgTop->isEmpty())
-        {{ $imgTop }}
+        {!! $imgTop !!}
     @endif
     @if (isset($header) && !$header->isEmpty())
         <div {{ $header->attributes->merge(['class' => 'card-header']) }}>
-            {{ $header }}
+            {!! $header !!}
         </div>
     @endif
     <div {{ $body->attributes->merge(['class' => 'card-body']) }}>
-        {{ $body ?? $slot }}
+        {!! $body ?? $slot !!}
     </div>
     @if (isset($footer) && !$footer->isEmpty())
         <div {{ $footer->attributes->merge(['class' => 'card-footer']) }}>
-            {{ $footer }}
+            {!! $footer !!}
         </div>
     @endif
     @if (isset($imgBottom) && !$imgBottom->isEmpty())
-        {{ $imgBottom }}
+        {!! $imgBottom !!}
     @endif
 </div>

@@ -45,6 +45,7 @@ Use:
         'inputmode' => $inputmode,
         'id' => $id,
         'wire:model.' . $bind => $model ? $prefix . $model : null,
+        'autocomplete' => 'off',
     ]);
 @endphp
 

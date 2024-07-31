@@ -31,6 +31,6 @@ Use:
     </a>
 
     <div class="dropdown-menu">
-        {{ $items ?? $slot }}
+        {!! $items ?? $slot !!}
     </div>
 </div>

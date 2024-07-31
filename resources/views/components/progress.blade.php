@@ -31,6 +31,6 @@ Use:
      style="{{($height ? ' height: ' . $height . 'px;' : '')}}"
 >
     <div {{ $attributes }}>
-        {{ $label ?? $slot }}
+        {!! $label ?? $slot !!}
     </div>
 </div>
