@@ -10,7 +10,7 @@ Use:
 
 @php
     $attributes = $attributes->class([
-        'form-label',
+        'control-label fw-bold',
     ])->merge([
         //
     ]);

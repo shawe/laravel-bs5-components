@@ -39,5 +39,5 @@ Use:
 <{{ $href ? 'a' : 'button' }} {{ $attributes }}>
     <x-bs::icon :name="$icon"/>
 
-{!! $label ?? $slot !!}
+<span @if($icon) class="ms-1" @endif >{!! $label ?? $slot !!}</span>
 </{{ $href ? 'a' : 'button' }}>

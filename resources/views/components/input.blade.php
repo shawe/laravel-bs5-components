@@ -19,6 +19,8 @@ Use:
     'model' => null,
     'debounce' => false,
     'lazy' => false,
+    'disabled' => false,
+    'readonly' => false,
 ])
 
 @php
@@ -46,6 +48,8 @@ Use:
         'id' => $id,
         'wire:model.' . $bind => $model ? $prefix . $model : null,
         'autocomplete' => 'off',
+        'readonly' => (bool) $readonly,
+        'disabled' => (bool) $disabled,
     ]);
 @endphp
 
