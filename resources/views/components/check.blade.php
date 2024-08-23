@@ -11,6 +11,8 @@ Use:
     'switch' => false,
     'model' => null,
     'lazy' => false,
+    'checked' => false,
+    'value' => 'true',
 ])
 
 @php
@@ -29,6 +31,8 @@ Use:
         'type' => 'checkbox',
         'id' => $id,
         'wire:model.' . $bind => $model ? $prefix . $model : null,
+        'checked' => (bool) $checked,
+        'value' => $value,
     ]);
 @endphp
 
