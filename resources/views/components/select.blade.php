@@ -5,6 +5,8 @@ Use:
     $countries = ['Australia', 'Canada', 'USA']
 @endphp
 <x-bs::select :label="__('Your Country')" :placeholder="__('Select Country')" :options="$countries" :prepend="__('I live in')" :append="_('right now.')" :help="__('Please select your country.')" model="your_country" />
+
+TODO: Need to be updated with multiple support from: resources/views/components/form/select.blade.php
 --}}
 
 @props([
@@ -66,32 +68,35 @@ Use:
     <x-bs::help :label="$help"/>
 </div>
 
-@if (isset($attributes['class']) && Illuminate\Support\Str::contains($attributes['class'], 'select2'))
+@once
     @push('css')
         <link rel="stylesheet" href="{{ asset('build/extensions/select2/css/select2.min.css') }}">
         <link rel="stylesheet"
               href="{{ asset('build/extensions/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css') }}">
     @endpush
 
-    @once
-        @push('js')
-            <script src="{{ asset('build/extensions/select2/js/select2.min.js') }}"></script>
-            @if (file_exists(public_path('build/extensions/select2/js/i18n/' . app()->getLocale() . '.js')))
-                <script src="{{ asset('build/extensions/select2/js/i18n/' . app()->getLocale() . '.js') }}"></script>
-            @endif
-            <script>
-                $(document).ready(function () {
-                    $('select.select2').select2({
-                        theme: 'bootstrap-5',
-                        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-                        closeOnSelect: false,
-                        placeholder: {
-                            id: '-1', // the value of the option
-                            text: '{{ __('Select one item') }}'
-                        }
-                    });
+    @push('js')
+        <script src="{{ asset('build/extensions/select2/js/select2.min.js') }}"></script>
+        @if (file_exists(public_path('build/extensions/select2/js/i18n/' . app()->getLocale() . '.js')))
+            <script src="{{ asset('build/extensions/select2/js/i18n/' . app()->getLocale() . '.js') }}"></script>
+        @endif
+    @endpush
+@endonce
+
+@if (isset($attributes['class']) && Illuminate\Support\Str::contains($attributes['class'], 'select2'))
+    @push('js')
+        <script>
+            $(document).ready(function () {
+                $('#{{ $id }}').select2({
+                    theme: 'bootstrap-5',
+                    width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
+                    closeOnSelect: false,
+                    placeholder: {
+                        id: '-1', // the value of the option
+                        text: '{{ __('Select one item') }}'
+                    }
                 });
-            </script>
-        @endpush
-    @endonce
+            });
+        </script>
+    @endpush
 @endif
