@@ -1,6 +1,8 @@
 {{--
 Use:
 
+<x-bs::input :label="__('Email Address')" type="email" :help="__('Please enter your email.')" id="email_address" name="email_address" />
+
 <x-bs::input :label="__('Email Address')" type="email" :help="__('Please enter your email.')" model="email_address" >
     <x-slot name="prepend">
         <i class="fa fa-envelope"></i>
