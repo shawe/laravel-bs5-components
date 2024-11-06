@@ -25,7 +25,7 @@ Use:
 
 <div class="nav-item dropdown">
     <a {{ $attributes }}>
-        <x-bs::icon :name="$icon"/>
+        <x-bs::fa-icon :name="$icon"/>
 
         {{ $label }}
     </a>

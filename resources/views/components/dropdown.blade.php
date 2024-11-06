@@ -29,7 +29,7 @@ Use:
 
 <div class="dropdown d-inline-block">
     <button {{ $attributes }}>
-        <x-bs::icon :name="$icon"/>
+        <x-bs::fa-icon :name="$icon"/>
 
         {{ $label }}
     </button>

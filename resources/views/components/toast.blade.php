@@ -26,7 +26,7 @@ Use:
 
 <div {{ $attributes }}>
     <div class="toast-header">
-        <x-bs::icon :name="$icon"/>
+        <x-bs::fa-icon :name="$icon"/>
         <strong class="me-auto">{{ $title }}</strong>
         @if ($subtitle)
             <small>{{ $subtitle }}</small>

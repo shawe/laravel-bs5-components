@@ -1,7 +1,7 @@
 {{--
 Use:
 
-<x-bs::icon name="cog" />
+<x-bs::fa-icon name="cog" />
 --}}
 
 @props([

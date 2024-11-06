@@ -37,7 +37,7 @@ Use:
 @endphp
 
 <{{ $href ? 'a' : 'button' }} {{ $attributes }}>
-    <x-bs::icon :name="$icon"/>
+    <x-bs::fa-icon :name="$icon"/>
 
 <span @if($icon) class="ms-1" @endif >{!! $label ?? $slot !!}</span>
 </{{ $href ? 'a' : 'button' }}>

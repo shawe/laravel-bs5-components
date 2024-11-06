@@ -38,7 +38,7 @@ Use:
 @endphp
 
 <button {{ $attributes }}>
-    <x-bs::icon :name="$icon"/>
+    <x-bs::fa-icon :name="$icon"/>
 
     {!! $label ?? $slot !!}
 </button>
