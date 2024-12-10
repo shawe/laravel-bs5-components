@@ -1,6 +1,6 @@
 <?php
 
-namespace Bastinald\LaravelBootstrapComponents\Traits;
+namespace Laravel\Bootstrap\Components\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
