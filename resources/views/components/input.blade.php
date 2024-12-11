@@ -48,6 +48,7 @@ Use:
         'type' => $type,
         'inputmode' => $inputmode,
         'id' => $id,
+        'name' => $key,
         'wire:model.' . $bind => $model ? $prefix . $model : null,
         'autocomplete' => 'off',
         'readonly' => (bool) $readonly,

@@ -30,6 +30,7 @@ Use:
     ])->merge([
         'type' => 'checkbox',
         'id' => $id,
+        'name' => $key,
         'wire:model.' . $bind => $model ? $prefix . $model : null,
         'checked' => (bool) $checked,
         'value' => $value,

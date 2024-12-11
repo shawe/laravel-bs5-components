@@ -35,6 +35,7 @@ Use:
         'is-invalid' => $errors->has($key),
     ])->merge([
         'id' => $id,
+        'name' => $key,
         'rows' => $rows,
         'wire:model.' . $bind => $model ? $prefix . $model : null,
     ]);

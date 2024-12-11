@@ -40,6 +40,7 @@ TODO: Need to be updated with multiple support from: resources/views/components/
         'is-invalid' => $errors->has($key),
     ])->merge([
         'id' => $id,
+        'name' => $key,
         'wire:model.' . $bind => $model ? $prefix . $model : null,
     ]);
 @endphp

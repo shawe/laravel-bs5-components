@@ -22,12 +22,14 @@ Use:
 
 @php
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
+    $key = $attributes->get('name', $model ?? $wireModel);
     $id = $attributes->get('id', $model ?? $wireModel);
 
     $attributes = $attributes->class([
         'accordion',
     ])->merge([
         'id' => $id,
+        'name' => $key,
     ]);
 @endphp
 

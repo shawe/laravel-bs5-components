@@ -32,6 +32,7 @@ Use:
     ])->merge([
         'type' => 'color',
         'id' => $id,
+        'name' => $key,
         'wire:model.' . $bind => $model ? $prefix . $model : null,
     ]);
 @endphp

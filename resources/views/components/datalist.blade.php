@@ -39,6 +39,7 @@ Use:
     ])->merge([
         'list' => $list,
         'id' => $id,
+        'name' => $key,
         'wire:model.' . $bind => $model ? $prefix . $model : null,
     ]);
 @endphp

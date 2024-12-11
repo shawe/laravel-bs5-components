@@ -14,6 +14,7 @@ Use:
 
 @php
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
+    $key = $attributes->get('name', $model ?? $wireModel);
     $id = $attributes->get('id', $model ?? $wireModel);
     $target = $attributes->get('target', $model ?? $wireModel);
 
@@ -21,6 +22,7 @@ Use:
         'accordion-item',
     ])->merge([
         'id' => $id,
+        'name' => $key,
     ]);
 @endphp
 
