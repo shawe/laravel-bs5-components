@@ -31,9 +31,9 @@ Use:
     else if (in_array($type, ['tel', 'search', 'email', 'url'])) $inputmode = $type;
     else $inputmode = 'text';
 
-    if ($debounce) $bind = 'debounce.' . (ctype_digit($debounce) ? $debounce : 150) . 'ms';
-    else if ($lazy) $bind = 'blur';
-    else if ($live) $bind = 'live';
+    if ($debounce) $bind = '.live.debounce.' . (ctype_digit($debounce) ? $debounce : 300) . 'ms';
+    else if ($lazy) $bind = '.blur';
+    else if ($live) $bind = '.live';
     else $bind = '';
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
@@ -51,7 +51,7 @@ Use:
         'inputmode' => $inputmode,
         'id' => $id,
         'name' => $key,
-        'wire:model.' . $bind => $model ? $prefix . $model : null,
+        'wire:model' . $bind => $model ? $prefix . $model : null,
         'autocomplete' => 'off',
         'readonly' => (bool) $readonly,
         'disabled' => (bool) $disabled,

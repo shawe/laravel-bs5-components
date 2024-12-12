@@ -17,8 +17,8 @@ Use:
 ])
 
 @php
-    if ($lazy) $bind = 'blur';
-    else if ($live) $bind = 'live';
+    if ($lazy) $bind = '.blur';
+    else if ($live) $bind = '.live';
     else $bind = '';
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
@@ -33,7 +33,7 @@ Use:
         'type' => 'checkbox',
         'id' => $id,
         'name' => $key,
-        'wire:model.' . $bind => $model ? $prefix . $model : null,
+        'wire:model' . $bind => $model ? $prefix . $model : null,
         'checked' => (bool) $checked,
         'value' => $value,
     ]);

@@ -22,9 +22,9 @@ Use:
 ])
 
 @php
-    if ($debounce) $bind = 'debounce.' . (ctype_digit($debounce) ? $debounce : 150) . 'ms';
-    else if ($lazy) $bind = 'blur';
-    else if ($live) $bind = 'live';
+    if ($debounce) $bind = '.live.debounce.' . (ctype_digit($debounce) ? $debounce : 300) . 'ms';
+    else if ($lazy) $bind = '.blur';
+    else if ($live) $bind = '.live';
     else $bind = '';
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
@@ -42,7 +42,7 @@ Use:
         'list' => $list,
         'id' => $id,
         'name' => $key,
-        'wire:model.' . $bind => $model ? $prefix . $model : null,
+        'wire:model' . $bind => $model ? $prefix . $model : null,
     ]);
 @endphp
 
