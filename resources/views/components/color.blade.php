@@ -13,11 +13,13 @@ Use:
     'help' => null,
     'model' => null,
     'lazy' => false,
+    'live' => false,
 ])
 
 @php
-    if ($lazy) $bind = 'lazy';
-    else $bind = 'defer';
+    if ($lazy) $bind = 'blur';
+    else if ($live) $bind = 'live';
+    else $bind = '';
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $key = $attributes->get('name', $model ?? $wireModel);
