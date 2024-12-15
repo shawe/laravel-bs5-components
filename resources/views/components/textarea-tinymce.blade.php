@@ -63,41 +63,39 @@ Use:
     @once
         @push($jsSection)
             @php
-                $baseCDN = 'https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.6.0';
                 $language = str_replace('_', '-', app()->getLocale());
             @endphp
             {{-- From: https://cdnjs.com/libraries/tinymce --}}
-            <script src="{{ $baseCDN }}/tinymce.min.js"></script>
-            {{--<script src="{{ $baseCDN }}/icons/default/icons.min.js"></script>--}}
-            {{--<script src="{{ $baseCDN }}/models/dom/model.min.js"></script>--}}
-            <script src="{{ $baseCDN }}/plugins/accordion/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/advlist/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/anchor/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/autolink/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/autolink/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/autosave/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/charmap/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/code/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/directionality/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/emoticons/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/fullscreen/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/help/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/image/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/insertdatetime/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/link/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/lists/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/media/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/nonbreaking/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/pagebreak/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/preview/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/quickbars/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/save/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/searchreplace/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/table/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/visualblocks/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/visualchars/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/wordcount/plugin.min.js"></script>
-            <script src="{{ $baseCDN }}/plugins/help/js/i18n/keynav/{{ $language }}.min.js"></script>
+            <script src="{{ asset("build/extensions/tinymce/tinymce.min.js") }}"></script>
+            {{--<script src="{{ asset("build/extensions/tinymce/plugins/icons/default/icons.min.js") }}"></script>--}}
+            {{--<script src="{{ asset("build/extensions/tinymce/plugins/models/dom/model.min.js") }}"></script>--}}
+            <script src="{{ asset("build/extensions/tinymce/plugins/accordion/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/advlist/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/anchor/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/autolink/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/autolink/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/autosave/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/charmap/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/code/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/directionality/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/emoticons/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/fullscreen/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/help/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/image/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/insertdatetime/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/link/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/lists/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/media/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/nonbreaking/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/pagebreak/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/preview/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/quickbars/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/save/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/searchreplace/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/table/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/visualblocks/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/visualchars/plugin.min.js") }}"></script>
+            <script src="{{ asset("build/extensions/tinymce/plugins/wordcount/plugin.min.js") }}"></script>
 
             <script type="text/javascript">
                 {{-- Load the tinymce editor --}}
@@ -105,6 +103,8 @@ Use:
                 $(document).ready(function () {
                   tinymce.init({
                     selector: 'textarea.wysihtml5-tinymce',
+                    language_load: false,
+                    language_url: '{{ asset("build/extensions/tinymce-i18n/langs7/". $language . ".js") }}',
                     language: '{{ $language }}',
                     license_key: 'gpl',
                     promotion: false,
