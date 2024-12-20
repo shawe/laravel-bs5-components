@@ -71,25 +71,10 @@ TODO: Need to be updated with multiple support from: resources/views/components/
     <x-bs::help :label="$help"/>
 </div>
 
-@once
-    @push('css')
-        <link rel="stylesheet" href="{{ asset('build/extensions/select2/css/select2.min.css') }}">
-        <link rel="stylesheet"
-              href="{{ asset('build/extensions/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css') }}">
-    @endpush
-
-    @push('js')
-        <script src="{{ asset('build/extensions/select2/js/select2.min.js') }}"></script>
-        @if (file_exists(public_path('build/extensions/select2/js/i18n/' . app()->getLocale() . '.js')))
-            <script src="{{ asset('build/extensions/select2/js/i18n/' . app()->getLocale() . '.js') }}"></script>
-        @endif
-    @endpush
-@endonce
-
 @if (isset($attributes['class']) && Illuminate\Support\Str::contains($attributes['class'], 'select2'))
     @push('js')
         <script>
-            $(document).ready(function () {
+          document.addEventListener('DOMContentLoaded', function() {
                 $('#{{ $id }}').select2({
                     theme: 'bootstrap-5',
                     width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
