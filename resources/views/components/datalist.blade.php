@@ -22,7 +22,7 @@ Use:
 ])
 
 @php
-    if ($debounce) $bind = '.live.debounce.' . (ctype_digit($debounce) ? $debounce : 300) . 'ms';
+    if ($debounce) $bind = '.live.debounce.' . (ctype_digit($debounce) ? $debounce : 250) . 'ms';
     else if ($lazy) $bind = '.blur';
     else if ($live) $bind = '.live';
     else $bind = '';

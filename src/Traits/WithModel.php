@@ -35,6 +35,16 @@ trait WithModel
         }
     }
 
+    public function getModel($key)
+    {
+        return Arr::get($this->model, $key);
+    }
+
+    public function hasModel($key): bool
+    {
+        return Arr::has($this->model, $key);
+    }
+
     public function addModelItem($key)
     {
         $array = $this->getModel($key);

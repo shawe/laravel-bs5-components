@@ -31,7 +31,7 @@ Use:
     else if (in_array($type, ['tel', 'search', 'email', 'url'])) $inputmode = $type;
     else $inputmode = 'text';
 
-    if ($debounce) $bind = '.live.debounce.' . (ctype_digit($debounce) ? $debounce : 300) . 'ms';
+    if ($debounce) $bind = '.live.debounce.' . (ctype_digit($debounce) ? $debounce : 250) . 'ms';
     else if ($lazy) $bind = '.blur';
     else if ($live) $bind = '.live';
     else $bind = '';
