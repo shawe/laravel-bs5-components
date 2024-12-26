@@ -53,6 +53,7 @@ TODO: Need to be updated with multiple support from: resources/views/components/
     <div class="input-group">
         <x-bs::input-addon :icon="$icon" :label="$prepend"/>
 
+        {{-- IF NEEDED livewire support: MyBusiness/resources/views/components/form/select.blade.php --}}
         <select {{ $attributes }}>
             <option value="">{{ $placeholder }}</option>
 

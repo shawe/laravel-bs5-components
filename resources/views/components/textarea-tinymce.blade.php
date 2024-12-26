@@ -44,7 +44,7 @@ Use:
     ]);
 @endphp
 
-<div>
+<div wire:ignore>
     <x-bs::label :for="$id" :label="$label"/>
 
     <div class="input-group">
