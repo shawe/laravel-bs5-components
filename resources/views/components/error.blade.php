@@ -10,7 +10,7 @@ Use:
 
 @php
     $attributes = $attributes->class([
-        'invalid-feedback',
+        'text-danger',
     ])->merge([
         //
     ]);

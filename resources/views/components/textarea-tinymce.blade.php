@@ -44,18 +44,15 @@ Use:
     ]);
 @endphp
 
-<div wire:ignore>
+<div>
     <x-bs::label :for="$id" :label="$label"/>
 
-    <div class="input-group">
-        <x-bs::input-addon :icon="$icon" :label="$prepend"/>
-
-        <textarea {{ $attributes }}>{!! $value !!}</textarea>
-
-        <x-bs::input-addon :label="$append" class="rounded-end"/>
-
-        <x-bs::error :key="$key"/>
+    <div class="@error($key) is-invalid @enderror" wire:ignore>
+        <textarea @if ($this->hasModel($key)) wire:model="{{ $key }}" @endif {{ $attributes }}
+        >{!! $value !!}</textarea>
     </div>
+
+    <x-bs::error :key="$key"/>
 
     <x-bs::help :label="$help"/>
 </div>

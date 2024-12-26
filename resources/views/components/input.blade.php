@@ -67,9 +67,9 @@ Use:
         <input {{ $attributes }}>
 
         <x-bs::input-addon :label="$append" class="rounded-end"/>
-
-        <x-bs::error :key="$key"/>
     </div>
+
+    <x-bs::error :key="$key"/>
 
     <x-bs::help :label="$help"/>
 </div>
