@@ -42,14 +42,17 @@ Use:
         'rows' => $rows,
         'wire:model' . $bind => $model ? $prefix . $model : null,
     ]);
+
+    $cleanPrefix = rtrim($prefix, '.');
+    $value = $value ?? ($model ? $this->{$cleanPrefix}[$model] : null);
 @endphp
 
 <div>
     <x-bs::label :for="$id" :label="$label"/>
 
-    <div class="@error($key) is-invalid @enderror" wire:ignore>
+    <div wire:ignore>
         <textarea @if ($this->hasModel($key)) wire:model="{{ $key }}" @endif {{ $attributes }}
-        >{!! $value !!}</textarea>
+        >{!! $value ?? $slot !!}</textarea>
     </div>
 
     <x-bs::error :key="$key"/>
