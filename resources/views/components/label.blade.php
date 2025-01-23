@@ -6,6 +6,7 @@ Use:
 
 @props([
     'label' => null,
+    'for' => null,
 ])
 
 @php
@@ -17,7 +18,7 @@ Use:
 @endphp
 
 @if($label || !$slot->isEmpty())
-    <label {{ $attributes }}>
+    <label @if($for) for="{{ $for }}" @endif {{ $attributes }}>
         {!! $label ?? $slot !!}
     </label>
 @endif

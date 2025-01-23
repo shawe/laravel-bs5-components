@@ -29,7 +29,7 @@ Use:
     ])->merge([
         'href' => $href,
         'wire:click.prevent' => $click,
-        'data-bs-toogle' => $toogle,
+        'data-bs-toggle' => $toogle,
         'data-bs-target' => '#' . $target,
         'aria-controls' => $target ? $target : false,
         'aria-selected' => (bool) $selected ? 'true' : 'false',
