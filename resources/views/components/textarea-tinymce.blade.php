@@ -51,7 +51,7 @@ Use:
     <x-bs::label :for="$id" :label="$label"/>
 
     <div wire:ignore>
-        <textarea @if ($this->hasModel($key)) wire:model="{{ $key }}" @endif {{ $attributes }}
+        <textarea @if(isset($this) && $this->hasModel($key)) wire:model="{{ $key }}" @endif {{ $attributes }}
         >{!! $value ?? $slot !!}</textarea>
     </div>
 
