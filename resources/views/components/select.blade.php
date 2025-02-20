@@ -79,7 +79,7 @@ TODO: Need to be updated with multiple support from: resources/views/components/
                 $('#{{ $id }}').select2({
                     theme: 'bootstrap-5',
                     width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-                    closeOnSelect: false,
+                    closeOnSelect: true,
                     placeholder: {
                         id: '-1', // the value of the option
                         text: '{{ __('Select one item') }}'
