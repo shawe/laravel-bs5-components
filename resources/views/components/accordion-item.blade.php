@@ -30,7 +30,7 @@ Use:
     <h2 class="accordion-header">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $target}}"
                 aria-expanded="{{ $active }}" aria-controls="{{ $target }}">
-            {{ $header ?? __('N/A') }}
+            {{ $header ?? 'No header set' }}
         </button>
     </h2>
     <div id="{{ $target }}" class="accordion-collapse collapse @if($active == 'true') show @endif"

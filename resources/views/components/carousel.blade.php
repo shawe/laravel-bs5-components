@@ -28,6 +28,8 @@ Use:
     'indicators' => true,
     'controls' => true,
     'images' => [],
+    'previousText' => 'Previous',
+    'nextText' => 'Next',
 ])
 
 @php
@@ -61,11 +63,11 @@ Use:
     @if ($controls)
         <button class="carousel-control-prev" type="button" data-bs-target="#{{ $id }}" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{ __('Previous') }}</span>
+            <span class="visually-hidden">{{ $previousText }}</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#{{ $id }}" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">{{ __('Next') }}</span>
+            <span class="visually-hidden">{{ $nextText }}</span>
         </button>
     @endif
 </div>

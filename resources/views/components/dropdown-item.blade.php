@@ -19,7 +19,7 @@ Use:
 
     $attributes = $attributes->class([
         'dropdown-item',
-        'active' => $href == Request::url(),
+        'active' => false,
     ])->merge([
         'type' => !$href ? 'button' : null,
         'href' => $href,

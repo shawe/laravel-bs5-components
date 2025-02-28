@@ -43,7 +43,12 @@ Use:
     ]);
 
     $cleanPrefix = rtrim($prefix, '.');
-    $value = $value ?? ($model ? $this->{$cleanPrefix}[$model] : null);
+
+    try {
+        $value = $value ?? ($model && is_array($this->{$cleanPrefix}) ? $this->{$cleanPrefix}[$model] : null);
+    } catch (\Throwable $th) {
+        $value = null;
+    }
 @endphp
 
 <div>

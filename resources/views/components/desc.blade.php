@@ -27,7 +27,7 @@ Use:
         @elseif($date)
             @displayDate($date)
         @else
-            {{ __('N/A') }}
+            No detail set
         @endif
     </dd>
 </dl>
