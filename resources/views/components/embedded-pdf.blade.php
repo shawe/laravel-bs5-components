@@ -2,11 +2,7 @@
 Use:
 
 <x-bs::embedded-pdf
-                    :showDownload="true"
-                    :showPrint="true"
-                    :enableHandTool="true"
-                    :url="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-                    :viewerContainer="'viewerContainer'"
+    :url="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
 />
 --}}
 
@@ -15,40 +11,153 @@ Use:
     'showPrint' => false,
     'enableHandTool' => false,
     'url' => null,
-    'viewerContainer' => null,
-    'height' => '100%',
-    'class' => '',
+    'pdfViewerContainer' => null,
+    'previousTxt' => '<i class="ti ti-chevron-left"></i>',
+    'nextTxt' => '<i class="ti ti-chevron-right"></i>',
+    'scale' => 1,
 ])
 
-<div id="{{ $viewerContainer }}" class="pdf-viewer w-100" style="height: {{ $height }}"></div>
+@php
+    $showDownload = (bool) filter_var($showDownload, FILTER_VALIDATE_BOOLEAN);
+    $showPrint = (bool) filter_var($showPrint, FILTER_VALIDATE_BOOLEAN);
+    $enableHandTool = (bool) filter_var($enableHandTool, FILTER_VALIDATE_BOOLEAN);
+
+    $attributes = $attributes->class([
+        'pdf-viewer', 'w-100', 'h-100', 'text-center',
+    ])->merge([
+        'id' => $pdfViewerContainer ?? 'pdfViewerContainer' . Str::random(8),
+    ]);
+@endphp
+
+<div>
+    <div {{ $attributes }}>
+        <div class="row">
+            <div class="col-12">
+                <div class="btn-group" role="group">
+                    <button id="previousBtn" class="btn btn-primary">
+                        {!! $previousTxt !!}
+                    </button>
+                    <button class="btn btn-outline-primary">
+                        <span id="pageNum"></span> / <span id="pageCount"></span>
+                    </button>
+                    <button id="nextBtn" class="btn btn-primary">
+                        {!! $nextTxt !!}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <canvas id="pdfCanvas"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
 
 @once
     @push('css')
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf_viewer.min.css" />
+        <style>
+            .pdf-viewer canvas {
+                border: 1px solid black;
+            }
+        </style>
     @endpush
     @push('js')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
-        <script>
+        <script src="https://mozilla.github.io/pdf.js/build/pdf.mjs" type="module"></script>
+        <script type="module">
           const url = '{{ $url }}';
-
-          const pdfjsLib = window['pdfjs-dist'];
+          const { pdfjsLib } = globalThis;
 
           // Configurar PDF.js
-          pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
+          pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.mjs';
 
-          const container = document.getElementById({{ $viewerContainer }});
+          let pdfDoc = null,
+            pageNum = 1,
+            pageRendering = false,
+            pageNumPending = null,
+            scale = {{ $scale ?? 1 }},
+            canvas = document.getElementById('pdfCanvas'),
+            ctx = canvas.getContext('2d');
 
-          // Cargar el PDF
-          pdfjsLib.getDocument(url).promise.then(function (pdf) {
-            const viewer = new pdfjsLib.PDFViewer({
-              container: container,
-              removePageBorders: true,
-              showDownload: {{ $showDownload }},
-              showPrint: {{ $showPrint }},
-              enableHandTool: {{ $enableHandTool }},
+          /**
+           * Get page info from document, resize canvas accordingly, and render page.
+           * @param num Page number.
+           */
+          function renderPage(num) {
+            pageRendering = true;
+            // Using promise to fetch the page
+            pdfDoc.getPage(num).then(function(page) {
+              var viewport = page.getViewport({scale: scale});
+              canvas.height = viewport.height;
+              canvas.width = viewport.width;
+
+              // Render PDF page into canvas context
+              var renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+              };
+              var renderTask = page.render(renderContext);
+
+              // Wait for rendering to finish
+              renderTask.promise.then(function() {
+                pageRendering = false;
+                if (pageNumPending !== null) {
+                  // New page rendering is pending
+                  renderPage(pageNumPending);
+                  pageNumPending = null;
+                }
+              });
             });
 
-            viewer.setDocument(pdf);
+            // Update page counters
+            document.getElementById('pageNum').textContent = num;
+          }
+
+          /**
+           * If another page rendering in progress, waits until the rendering is
+           * finised. Otherwise, executes rendering immediately.
+           */
+          function queueRenderPage(num) {
+            if (pageRendering) {
+              pageNumPending = num;
+            } else {
+              renderPage(num);
+            }
+          }
+
+          /**
+           * Displays previous page.
+           */
+          function onPrevPage() {
+            if (pageNum <= 1) {
+              return;
+            }
+            pageNum--;
+            queueRenderPage(pageNum);
+          }
+          document.getElementById('previousBtn').addEventListener('click', onPrevPage);
+
+          /**
+           * Displays next page.
+           */
+          function onNextPage() {
+            if (pageNum >= pdfDoc.numPages) {
+              return;
+            }
+            pageNum++;
+            queueRenderPage(pageNum);
+          }
+          document.getElementById('nextBtn').addEventListener('click', onNextPage);
+
+          /**
+           * Asynchronously downloads PDF.
+           */
+          pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+            pdfDoc = pdfDoc_;
+            document.getElementById('pageCount').textContent = pdfDoc.numPages;
+
+            // Initial/first page rendering
+            renderPage(pageNum);
           });
         </script>
     @endpush
