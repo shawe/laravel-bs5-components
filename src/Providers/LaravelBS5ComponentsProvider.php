@@ -11,21 +11,21 @@ class LaravelBS5ComponentsProvider extends ServiceProvider
      *
      * @var string
      */
-    private $name = 'laravel-bs5-components';
+    private string $name = 'laravel-bs5-components';
 
     /**
      * Namespace to call from views.
      *
      * @var string
      */
-    private $namespace = 'bs';
+    private string $namespace = 'bs';
 
     /**
      *
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', $this->namespace);
 
@@ -45,7 +45,7 @@ class LaravelBS5ComponentsProvider extends ServiceProvider
  *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/' . $this->name . '.php', $this->name);
     }
