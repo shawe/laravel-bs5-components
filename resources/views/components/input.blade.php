@@ -24,6 +24,7 @@ Use:
     'live' => false,
     'disabled' => false,
     'readonly' => false,
+    'attrs' => [],
 ])
 
 @php
@@ -55,7 +56,7 @@ Use:
         'autocomplete' => 'off',
         'readonly' => (bool) $readonly,
         'disabled' => (bool) $disabled,
-    ]);
+    ])->merge($attrs);
 @endphp
 
 <div>
