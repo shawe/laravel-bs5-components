@@ -29,7 +29,8 @@ Use:
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $key = $attributes->get('name', $model ?? $wireModel);
-    $id = $attributes->get('id', $model ?? $wireModel);
+    $id = $attributes->get('id', $model ?? $wireModel ?? 'datalist_id_' . random_int(10, 20));
+    $id = str_replace(['[', ']', '.'], '_', $id);
     $prefix = config('laravel-bs5-components.use_with_model_trait') ? 'model.' : null;
     $list = $attributes->get('list', $key . '_list');
 

@@ -25,7 +25,8 @@ Use:
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $key = $attributes->get('name', $model ?? $wireModel);
-    $id = $attributes->get('id', $model ?? $wireModel);
+    $id = $attributes->get('id', $model ?? $wireModel ?? 'textarea_ace_id_' . random_int(10, 20));
+    $id = str_replace(['[', ']', '.'], '_', $id);
     $prefix = config('laravel-bs5-components.use_with_model_trait') ? 'model.' : null;
 
     $attributes = $attributes->class([

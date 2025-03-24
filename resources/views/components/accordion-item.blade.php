@@ -15,7 +15,8 @@ Use:
 @php
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
     $key = $attributes->get('name', $model ?? $wireModel);
-    $id = $attributes->get('id', $model ?? $wireModel);
+    $id = $attributes->get('id', $model ?? $wireModel ?? 'accordion_item_id_' . random_int(10, 20));
+    $id = str_replace(['[', ']', '.'], '_', $id);
     $target = $attributes->get('target', $model ?? $wireModel);
 
     $attributes = $attributes->class([
