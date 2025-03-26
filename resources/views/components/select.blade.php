@@ -45,6 +45,7 @@ TODO: Need to be updated with multiple support from: resources/views/components/
         'form-select-' . $size => $size,
         'rounded-end' => !$append,
         'is-invalid' => $errors->has($key),
+        'bs5-component',
     ])->merge([
         'id' => $id,
         'name' => $key,
@@ -53,14 +54,16 @@ TODO: Need to be updated with multiple support from: resources/views/components/
 @endphp
 
 <div>
-    <x-bs::label :for="$id" :label="$label"/>
+    <x-bs::label :for="$id" :label="$label" />
 
     <div class="input-group">
-        <x-bs::input-addon :icon="$icon" :label="$prepend"/>
+        <x-bs::input-addon :icon="$icon" :label="$prepend" />
 
         {{-- IF NEEDED livewire support: MyBusiness/resources/views/components/form/select.blade.php --}}
         <select {{ $attributes }}>
-            <option value="">{{ $placeholder }}</option>
+            @if ($placeholder)
+                <option value="">{{ $placeholder }}</option>
+            @endif
 
             @foreach($options as $optionValue => $optionLabel)
                 <option value="{{ $optionValue }}" @if ($optionValue === $selectedItem) selected @endif>
@@ -69,28 +72,10 @@ TODO: Need to be updated with multiple support from: resources/views/components/
             @endforeach
         </select>
 
-        <x-bs::input-addon :label="$append" class="rounded-end"/>
+        <x-bs::input-addon :label="$append" class="rounded-end" />
 
-        <x-bs::error :key="$key"/>
+        <x-bs::error :key="$key" />
     </div>
 
-    <x-bs::help :label="$help"/>
+    <x-bs::help :label="$help" />
 </div>
-
-@if (isset($attributes['class']) && Illuminate\Support\Str::contains($attributes['class'], 'select2'))
-    @push('js')
-        <script>
-          document.addEventListener('DOMContentLoaded', function() {
-                $('#{{ $id }}').select2({
-                    theme: 'bootstrap-5',
-                    width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-                    closeOnSelect: true,
-                    placeholder: {
-                        id: '-1', // the value of the option
-                        text: '{{ __('Select one item') }}'
-                    }
-                });
-            });
-        </script>
-    @endpush
-@endif
