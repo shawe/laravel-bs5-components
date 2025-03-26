@@ -13,6 +13,7 @@ Use:
     'debounce' => false,
     'lazy' => false,
     'live' => false,
+    'defer' => false,
     'value' => null,
     'mode' => 'ace/mode/html',
 ])
@@ -21,6 +22,7 @@ Use:
     if ($debounce) $bind = '.live.debounce.' . (ctype_digit($debounce) ? $debounce : 250) . 'ms';
     else if ($lazy) $bind = '.blur';
     else if ($live) $bind = '.live';
+    else if ($defer) $bind = '.defer';
     else $bind = '';
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
@@ -54,13 +56,15 @@ Use:
     <x-bs::label :for="$id" :label="$label"/>
 
     <div wire:ignore>
+        <x-bs::help :label="$help"/>
+
         <div @if(isset($this) && $this->hasModel($key)) wire:model="{{ $key }}" @endif {{ $attributes }}
         >{!! $value ?? $slot !!}</div>
+
+        <x-bs::error :key="$key"/>
+        <div id="{{ $id }}-error" class="text-danger mt-1"></div>
     </div>
 
-    <x-bs::error :key="$key"/>
-
-    <x-bs::help :label="$help"/>
 </div>
 
 @push('css')

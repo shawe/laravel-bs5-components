@@ -19,12 +19,14 @@ Use:
     'debounce' => null,
     'lazy' => false,
     'live' => false,
+    'defer' => false,
 ])
 
 @php
     if ($debounce) $bind = '.live.debounce.' . (ctype_digit($debounce) ? $debounce : 250) . 'ms';
     else if ($lazy) $bind = '.blur';
     else if ($live) $bind = '.live';
+    else if ($defer) $bind = '.defer';
     else $bind = '';
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();

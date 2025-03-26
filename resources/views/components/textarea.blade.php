@@ -16,6 +16,7 @@ Use:
     'debounce' => false,
     'lazy' => false,
     'live' => false,
+    'defer' => false,
     'value' => null,
 ])
 
@@ -23,6 +24,7 @@ Use:
     if ($debounce) $bind = '.live.debounce.' . (ctype_digit($debounce) ? $debounce : 250) . 'ms';
     else if ($lazy) $bind = '.blur';
     else if ($live) $bind = '.live';
+    else if ($defer) $bind = '.defer';
     else $bind = '';
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
@@ -56,10 +58,11 @@ Use:
     <x-bs::label :for="$id" :label="$label"/>
 
     <div wire:ignore>
+        <x-bs::help :label="$help"/>
+
         <textarea {{ $attributes }}>{!! $value ?? $slot !!}</textarea>
+
+        <x-bs::error :key="$key"/>
     </div>
 
-    <x-bs::error :key="$key"/>
-
-    <x-bs::help :label="$help"/>
 </div>

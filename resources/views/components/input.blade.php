@@ -22,19 +22,24 @@ Use:
     'debounce' => false,
     'lazy' => false,
     'live' => false,
+    'defer' => false,
     'disabled' => false,
     'readonly' => false,
     'attrs' => [],
 ])
 
 @php
-    if ($type == 'number') $inputmode = 'decimal';
-    else if (in_array($type, ['tel', 'search', 'email', 'url'])) $inputmode = $type;
-    else $inputmode = 'text';
+    $inputmode = 'text';
+    if ($type === 'number') {
+        $inputmode = 'decimal';
+    } elseif (in_array($type, ['date', 'datetime-local', 'email', 'hidden', 'month', 'password', 'range', 'reset', 'search', 'submit', 'tel', 'time', 'url', 'week'])) {
+        $inputmode = $type;
+    }
 
     if ($debounce) $bind = '.live.debounce.' . (ctype_digit($debounce) ? $debounce : 250) . 'ms';
     else if ($lazy) $bind = '.blur';
     else if ($live) $bind = '.live';
+    else if ($defer) $bind = '.defer';
     else $bind = '';
 
     $wireModel = $attributes->whereStartsWith('wire:model')->first();
@@ -57,7 +62,7 @@ Use:
         'autocomplete' => 'off',
         'readonly' => (bool) $readonly,
         'disabled' => (bool) $disabled,
-    ])->merge($attrs);
+    ])->merge($attrs ?? []);
 @endphp
 
 <div>

@@ -20,7 +20,7 @@ Use:
         'btn btn-' . $color,
         'btn-' . $size => $size,
         'dropdown-toggle',
-        'border-0 p-0' => $color == 'link',
+        'border-0 p-0' => $color === 'link',
     ])->merge([
         'type' => 'button',
         'data-bs-toggle' => 'dropdown',
