@@ -17,6 +17,7 @@ Use:
     'toggle' => null,
     'click' => null,
     'confirm' => false,
+    'title' => null,
 ])
 
 @php
@@ -28,6 +29,7 @@ Use:
         'btn-' . $size => $size,
     ])->merge([
         'type' => !$href ? $type : null,
+        'title' => $title,
         'href' => $href,
         'data-bs-dismiss' => $dismiss,
         'data-bs-toggle' => $toggle,

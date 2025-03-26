@@ -12,6 +12,7 @@ Use:
     'url' => null,
     'href' => '#',
     'click' => null,
+    'title' => null,
 ])
 
 @php
@@ -23,6 +24,7 @@ Use:
     ])->merge([
         'href' => $href,
         'wire:click.prevent' => $click,
+        'title' => $title,
     ]);
 @endphp
 
