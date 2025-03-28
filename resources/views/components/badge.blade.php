@@ -15,6 +15,7 @@ Use:
     $attributes = $attributes->class([
         'badge bg-' . $color,
         'rounded-pill' => $rounded,
+        'mb-1'
     ])->merge([
         //
     ]);
